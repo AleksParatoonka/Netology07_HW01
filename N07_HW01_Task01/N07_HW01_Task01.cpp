@@ -4,25 +4,25 @@
 #include <iostream>
 #include <windows.h>
 #include <vector>
+#include <algorithm>
 
 int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    //std::vector =
-    //std::vector <int> array1 = { 4, 7, 9, 14, 12};
+
     std::vector <int> array1 = { 4, 7, 9, 14, 12 };
     std::cout << "Входные данные:  ";
     for (int numb : array1) {
         std::cout << numb << " ";
     }
     std::cout << std::endl;
-    std::cout << "Выходные данные:  ";
-    auto lambda = [](int x) { return x * 3; };
-    //[] {};
-    for (int numb : array1) {
-        std::cout << lambda(numb) << " ";
-    }
 
-    //не поняла зачем использовать методы begin и end - как сказано в Подсказке 1
+    std::cout << "Выходные данные:  ";
+    //auto lambda = [](int x) { return x+(x * 2)*(x%2); };
+
+    std::for_each(array1.begin(), array1.end(), [](int& n) { n+=(2*n)*(n%2); });
+    for (int numb : array1) {
+        std::cout << numb << " ";
+    }
 }
